@@ -27,10 +27,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className="shadow-md md:px-20 mb-5 fixed top-0 left-0 w-full z-50 bg-ruby"
+      className="shadow-md lg:px-25 md:px-10 px-5 fixed top-0 left-0 w-full z-50 bg-ruby"
     >
       {/* Desktop and Mobile Layout */}
-      <div className="container mx-auto px-5">
+      <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
           {/* Left Section - Logo & Title */}
           <div className="flex-shrink-0 flex items-center">

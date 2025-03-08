@@ -3,6 +3,8 @@ import Navbar from '../Components/Navbar'
 import Carousel from '../Components/Caraousel'
 import Solution from '../Sections/Home/Solution';
 import Footer from '../Components/Footer';
+import WhyToUse from '../Sections/Home/WHyToUse';
+import Faq from '../Sections/Home/Faq';
 
 const Home = () => {
     const carousel = [
@@ -40,11 +42,19 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            <div className='pt-20 px-5 sm:px-20 md:px-25'>
+            <div className='pt-20 lg:px-25 md:px-10 px-5'>
                 <Carousel carousel={carousel} />
 
-                <div className="mt-10">
+                <div className="mt-15">
                     <Solution />
+                </div>
+
+                <div className="mt-15">
+                    <WhyToUse />
+                </div>
+
+                <div className="mt-15">
+                    <Faq />
                 </div>
 
             </div>

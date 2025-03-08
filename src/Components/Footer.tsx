@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-ruby text-white py-8 px-25">
+        <footer className="bg-ruby text-white py-8 lg:px-25 md:px-10 px-5">
             {/* Container utama dengan grid responsif */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 {/* 1. Company Info */}
@@ -99,7 +99,7 @@ const Footer = () => {
                         <a href="https://fikryrdev.vercel.app" className="hover:text-white transition-colors">
                             <IconUser size={20} />
                         </a>
-                        <a href="https://www.instagram.com/" className="hover:text-white transition-colors">
+                        <a href="https://www.instagram.com/_fkryyrmdhan._" className="hover:text-white transition-colors">
                             <IconBrandInstagram size={20} />
                         </a>
                     </div>
