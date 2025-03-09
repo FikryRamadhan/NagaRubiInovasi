@@ -1,0 +1,22 @@
+## Sebelum memulai, pastikan Anda telah menginstal:
+Git:
+Jika belum, unduh dan pasang dari git-scm.com.
+Node.js dan npm:
+Unduh dan pasang dari nodejs.org. Pastikan versi Node.js sesuai dengan rekomendasi pada proyek.
+Editor Kode:
+Gunakan editor favorit seperti Visual Studio Code untuk mengedit dan mengembangkan kode.
+
+## Instalasi Dependencies
+Pastikan Anda berada di direktori proyek, kemudian jalankan perintah berikut untuk menginstal semua dependencies:
+npm install
+Perintah ini akan membaca file package.json dan menginstal seluruh package yang diperlukan.
+
+## Menjalankan Proyek Secara Lokal
+Setelah instalasi selesai, Anda dapat menjalankan server pengembangan dengan perintah:
+npm run dev
+Server pengembangan biasanya akan berjalan di http://localhost:5173 atau port yang telah dikonfigurasi di proyek.
+Buka browser Anda dan akses URL tersebut untuk melihat aplikasi berjalan.
+
+
+
+

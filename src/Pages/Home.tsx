@@ -33,7 +33,7 @@ const Home = () => {
             content: (
                 <img
                     src="/carousels/3.png"
-                    alt="Teknologi 3"
+                    alt="Jasa Website"
                     className="w-full h-full"
                 />
             ),

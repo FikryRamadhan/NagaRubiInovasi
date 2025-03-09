@@ -1,0 +1,19 @@
+## Tujuan Fitur Home
+Halaman Home berfungsi sebagai beranda utama untuk memberikan gambaran umum tentang aplikasi, 
+menyajikan informasi penting, dan membantu pengguna menavigasi fitur-fitur lainnya dengan mudah.
+
+## 🖥️ Desain dan Komponen pada Halaman Home
+- Header / Navbar
+Menampilkan logo dan navigasi utama.
+Memudahkan pengguna berpindah ke halaman lain (About, Services, Contact, dll).
+
+- Hero Section
+Bagian atas halaman yang menarik perhatian pengguna.
+Menampilkan gambar/banner dan teks ajakan (CTA).
+
+-Highlight Features
+Menjelaskan fitur utama aplikasi secara singkat.
+Menggunakan komponen kartu atau ikon untuk menarik perhatian.
+
+- Footer
+Bagian bawah halaman yang memuat informasi kontak, tautan tambahan, dan media sosial.
