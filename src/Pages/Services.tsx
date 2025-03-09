@@ -4,7 +4,6 @@ import Navbar from '../Components/Navbar'
 import Talent from '../Sections/Servises/Talent'
 import OurServices from '../Sections/Servises/OurServices'
 import Footer from '../Components/Footer'
-import GetStarted from '../Sections/GetStarted'
 
 const Services = () => {
   const carousel = [

@@ -29,17 +29,16 @@ export default function Navbar() {
   }, []);
 
   const handleCheckOut = () => {
-    const semuaItems = cart.map((item) => {
-      if (item.selected) {
-       const data = {
-          name: item.name,
-          price: item.price,
-      }
+    const selectedItems = cart
+      .filter((item) => item.selected)
+      .map((item) => `*${item.name}* - Rp${item.price.toLocaleString()}`)
+      .join('\n');
 
-      return data;
-      }
-    });
-    console.log(semuaItems);
+    const waMessage = `Halo, saya ingin membeli layanan berikut:\n${selectedItems}`;
+    console.log(waMessage);
+    const waUrl = `https://wa.me/6283823115994?text=${waMessage}`;
+    window.open(waUrl, '_blank');
+
   };
 
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -84,14 +83,14 @@ export default function Navbar() {
 
           {/* Right Section - Icons (visible on all screens) */}
           <div className="flex items-center space-x-4">
-          <button onClick={toggleCart} className="relative inline-block">
-            <IconShoppingBag
-              size={32}
-              className="cursor-pointer text-white transition-colors"
-            />
-            {/* Badge Angka */}
-            <span
-              className="
+            <button onClick={toggleCart} className="relative inline-block">
+              <IconShoppingBag
+                size={32}
+                className="cursor-pointer text-white transition-colors"
+              />
+              {/* Badge Angka */}
+              <span
+                className="
                 absolute
                 -top-1
                 -right-1
@@ -105,10 +104,10 @@ export default function Navbar() {
                 items-center
                 justify-center
               "
-            >
-              {cart.length}
-            </span>
-          </button>
+              >
+                {cart.length}
+              </span>
+            </button>
 
 
             {/* Hamburger Menu Button (visible only on smaller screens) */}
@@ -135,7 +134,7 @@ export default function Navbar() {
             <div className="p-5">
               <div className="flex justify-between items-center mb-6">
                 <button onClick={toggleMenu} className="text-gray-100 hover:text-gray-300 focus:outline-none">
-                 <IconX className='text-gray-950' />
+                  <IconX className='text-gray-950' />
                 </button>
               </div>
               <div className="flex flex-col space-y-4">
@@ -216,10 +215,10 @@ export default function Navbar() {
                 </>
               );
             })()}
-            
-              <button onClick={handleCheckOut} className="w-full bg-ruby text-white py-2 rounded mt-4 cursor-pointer">
-                Checkout
-              </button>
+
+            <button onClick={handleCheckOut} className="w-full bg-ruby text-white py-2 rounded mt-4 cursor-pointer">
+              Checkout
+            </button>
           </div>
         </div>
         {isCartOpen && (
