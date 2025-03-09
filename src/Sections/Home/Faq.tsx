@@ -36,7 +36,7 @@ const Faq: React.FC = () => {
                     <div key={index} className="border-b border-gray-200 pb-4 mb-4">
                         <button
                             onClick={() => toggleFAQ(index)}
-                            className="w-full text-center flex justify-between items-center text-lg text-gray-700 focus:outline-none"
+                            className="w-full text-center flex justify-between  md:text-lg text-sm text-gray-700 focus:outline-none"
                         >
                             {faq.question}
                             <span className="ml-2 text-gray-500">

@@ -1,8 +1,8 @@
 import React from 'react'
 import Carousel from '../Components/Caraousel'
 import Navbar from '../Components/Navbar'
-import Talent from '../Sections/Servisec/Talent'
-import OurServices from '../Sections/Servisec/OurServices'
+import Talent from '../Sections/Servises/Talent'
+import OurServices from '../Sections/Servises/OurServices'
 import Footer from '../Components/Footer'
 import GetStarted from '../Sections/GetStarted'
 
@@ -29,9 +29,6 @@ const Services = () => {
         </div>
         <div className="mt-10">
           <OurServices />
-        </div>
-        <div className="mt-10">
-          <GetStarted />
         </div>
       </div>
 

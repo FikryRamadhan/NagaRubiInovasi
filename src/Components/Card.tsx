@@ -7,7 +7,7 @@ interface SolutionCardProps {
 
 const Card: React.FC<SolutionCardProps> = ({ icon, label }) => {
     return (
-        <div className="bg-white p-6 rounded-md shadow-md flex flex-col items-center">
+        <div className="bg-gray-50 p-6 rounded-md shadow-md flex flex-col items-center">
             {icon}
             <p className="text-gray-600 text-center font-semibold">{label}</p>
         </div>

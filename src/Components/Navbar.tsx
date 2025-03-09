@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '../Context/CartContext';
+import { IconMenu, IconMenu2, IconShoppingBag, IconX } from '@tabler/icons-react';
+import Cart from './Cart';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +27,24 @@ export default function Navbar() {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleCheckOut = () => {
+    const semuaItems = cart.map((item) => {
+      if (item.selected) {
+       const data = {
+          name: item.name,
+          price: item.price,
+      }
+
+      return data;
+      }
+    });
+    console.log(semuaItems);
+  };
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
+  const { cart, handleQuantityChange, handleSelectChange } = useCart();
 
   return (
     <nav
@@ -63,60 +84,40 @@ export default function Navbar() {
 
           {/* Right Section - Icons (visible on all screens) */}
           <div className="flex items-center space-x-4">
-            <button className="text-gray-100 hover:text-gray-300"></button>
-            <button className="text-gray-100 hover:text-gray-300">
-              {/* Shopping Cart Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-            </button>
+          <button onClick={toggleCart} className="relative inline-block">
+            <IconShoppingBag
+              size={32}
+              className="cursor-pointer text-white transition-colors"
+            />
+            {/* Badge Angka */}
+            <span
+              className="
+                absolute
+                -top-1
+                -right-1
+                bg-red-500
+                text-white
+                text-xs
+                rounded-full
+                w-4
+                h-4
+                flex
+                items-center
+                justify-center
+              "
+            >
+              {cart.length}
+            </span>
+          </button>
 
 
             {/* Hamburger Menu Button (visible only on smaller screens) */}
             <button onClick={toggleMenu} className="lg:hidden text-gray-100 hover:text-gray-300 focus:outline-none">
               {isMenuOpen ? (
-                // X Icon
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <IconX className='cursor-pointer' />
               ) : (
                 // Menu Icon
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+                <IconMenu2 className='cursor-pointer' />
               )}
             </button>
           </div>
@@ -134,20 +135,7 @@ export default function Navbar() {
             <div className="p-5">
               <div className="flex justify-between items-center mb-6">
                 <button onClick={toggleMenu} className="text-gray-100 hover:text-gray-300 focus:outline-none">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
+                 <IconX className='text-gray-950' />
                 </button>
               </div>
               <div className="flex flex-col space-y-4">
@@ -168,6 +156,79 @@ export default function Navbar() {
           </div>
         </>
       )}
+
+      {/* Sidebar Cart */}
+      <div className="m-0 font-sans">
+        <div
+          className={`fixed h-full w-[300px] top-0 bg-white shadow-xl transition-all duration-500 z-50 p-6 flex flex-col ${isCartOpen ? "right-0" : "right-[-300px]"
+            }`}
+        >
+          {/* Header - tetap di atas */}
+          <div className="flex-none">
+            <div className="flex items-center justify-between">
+              <h4 className="text-lg">Service Cart</h4>
+              <button onClick={toggleCart}>
+                <IconX size={32} />
+              </button>
+            </div>
+          </div>
+
+          {/* Area Item - hanya bagian ini yang discroll */}
+          <div className="flex-1 mt-6 overflow-y-auto">
+            {cart.length === 0 ? (
+              <div className="text-center text-lg text-gray-500">
+                Service Is Empty
+              </div>
+            ) : (
+              cart.map((cartItem) => (
+                <Cart
+                  key={cartItem.id}
+                  {...cartItem}
+                  onQuantityChange={handleQuantityChange}
+                  onSelectChange={handleSelectChange}
+                />
+              ))
+            )}
+          </div>
+
+          {/* Footer Checkout - selalu di bawah */}
+          <div className="flex-none border-t pt-4">
+            {(() => {
+              const totalItems = cart.reduce(
+                (acc, item) => acc + (item.selected ? 1 : 0),
+                0
+              );
+              const totalPrice = cart.reduce(
+                (acc, item) =>
+                  acc + (item.selected ? item.price * 1 : 0),
+                0
+              );
+              return (
+                <>
+                  <div className="flex justify-between text-lg font-semibold">
+                    <span>Total Items:</span>
+                    <span>{totalItems}</span>
+                  </div>
+                  <div className="flex justify-between text-lg font-semibold">
+                    <span>Total Price:</span>
+                    <span>Rp {totalPrice.toLocaleString()}</span>
+                  </div>
+                </>
+              );
+            })()}
+            
+              <button onClick={handleCheckOut} className="w-full bg-ruby text-white py-2 rounded mt-4 cursor-pointer">
+                Checkout
+              </button>
+          </div>
+        </div>
+        {isCartOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40"
+            onClick={toggleCart}
+          ></div>
+        )}
+      </div>
     </nav>
   );
 }
