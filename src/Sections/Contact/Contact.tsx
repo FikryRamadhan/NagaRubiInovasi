@@ -9,11 +9,11 @@ const Contact = () => {
         <div className="space-y-4">
           <h3 className="md:text-lg text-md font-semibold">Contact Information</h3>
           <p>
-            📍 123 Talent Street, New York, NY 10001
+            📍 Jl. Cisitu Indah VI No.255, Dago, Kecamatan Coblong, Kota Bandung, Jawa Barat 401351
             <br />
-            📞 +1 (555) 123-4567
+            📞 +62 859 3669 2189
             <br />
-            ✉️ contact@talentcore.com
+            ✉️ rubitalent@gmail.com
           </p>
         </div>
 
