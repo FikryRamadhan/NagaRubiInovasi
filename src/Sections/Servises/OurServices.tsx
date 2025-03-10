@@ -83,7 +83,7 @@ const OurServices: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-5">
                 Our Services
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 pb-5">
                 {services.map((service) => (
                     <div
                         key={service.id}

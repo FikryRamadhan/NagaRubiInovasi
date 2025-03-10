@@ -29,12 +29,12 @@ export default function Navbar() {
   }, []);
 
   const handleCheckOut = () => {
-    const selectedItems = cart
+    const selectedItems = cart 
       .filter((item) => item.selected)
       .map((item) => `*${item.name}* - Rp${item.price.toLocaleString()}`)
       .join('\n');
 
-    const waMessage = `Halo, saya ingin membeli layanan berikut:\n${selectedItems}`;
+    const waMessage = `Halo, saya ingin membeli layanan berikut:\n ${selectedItems}`;
     console.log(waMessage);
     const waUrl = `https://wa.me/6283823115994?text=${waMessage}`;
     window.open(waUrl, '_blank');
@@ -74,9 +74,6 @@ export default function Navbar() {
               </NavLink>
               <NavLink to="/about" className="text-gray-100 hover:text-gray-300 px-3 py-2 font-medium">
                 About Us
-              </NavLink>
-              <NavLink to="/Service" className="text-gray-100 hover:text-gray-300 px-3 py-2 font-medium">
-                Contact
               </NavLink>
             </div>
           </div>
@@ -146,9 +143,6 @@ export default function Navbar() {
                 </NavLink>
                 <NavLink to="/about" className="text-gray-900 hover:text-gray-900 py-2 font-medium border-b border-gray-900">
                   About Us
-                </NavLink>
-                <NavLink to="/contact" className="text-gray-900 hover:text-gray-900 py-2 font-medium border-b border-gray-900">
-                  Contact
                 </NavLink>
               </div>
             </div>
