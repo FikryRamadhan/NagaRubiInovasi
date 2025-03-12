@@ -29,9 +29,9 @@ const Solution: React.FC = () => {
     return (
         <>
             <div className="text-center mb-8">
-                <h2 className="sm:text-2xl text-xl lg:text-3xl font-bold text-ruby">
+                <h1 className="sm:text-2xl text-xl lg:text-3xl font-bold text-ruby">
                     Our Key Strengths
-                </h2>
+                </h1>
                 <p className="text-lg text-gray-600 mt-2">
                     Discover what sets us apart in delivering exceptional talent and innovative recruitment solutions.
                 </p>
